@@ -1,0 +1,33 @@
+package com.demo.sfgpetclinic.services.map;
+
+import com.demo.sfgpetclinic.model.Pet;
+import com.demo.sfgpetclinic.services.CRUDServices;
+
+import java.util.Set;
+
+public class PetServicesMap extends AbstractMapServices<Pet, Long> implements CRUDServices<Pet, Long> {
+    @Override
+    public Set<Pet> findAll() {
+        return super.findAll();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        super.deleteById(id);
+    }
+
+    @Override
+    public void delete(Pet t) {
+        super.delete(t);
+    }
+
+    @Override
+    public Pet findById(Long id) {
+        return super.findById(id);
+    }
+
+    @Override
+    public Pet save(Pet t) {
+        return super.save(t.getId(), t);
+    }
+}
