@@ -20,4 +20,10 @@ public class OwnerController {
         model.addAttribute("owners", ownerServices.findAll());
         return "owners/index";
     }
+
+    @RequestMapping({"", "/", "/find", "/find.html"})
+    public String FindOwners(Model model) {
+
+        return "NotImplemented";
+    }
 }

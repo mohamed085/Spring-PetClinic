@@ -1,9 +1,6 @@
 package com.demo.sfgpetclinic.bootstrap;
 
-import com.demo.sfgpetclinic.model.Owner;
-import com.demo.sfgpetclinic.model.Pet;
-import com.demo.sfgpetclinic.model.PetType;
-import com.demo.sfgpetclinic.model.Vet;
+import com.demo.sfgpetclinic.model.*;
 import com.demo.sfgpetclinic.services.OwnerServices;
 import com.demo.sfgpetclinic.services.PetTypeServices;
 import com.demo.sfgpetclinic.services.SpecialitiesServices;
@@ -71,15 +68,22 @@ public class DataLoader implements CommandLineRunner {
         ownerServices.save(owner2);
 
 
+        Speciality speciality = new Speciality();
+        speciality.setDescription("Dentistry");
+
+        Speciality savedSpeciality = specialitiesServices.save(speciality);
+
         Vet vet1 = new Vet();
         vet1.setFirstName("Mohamed");
         vet1.setLastName("Emad");
+        vet1.getSpecialities().add(savedSpeciality);
         vetServices.save(vet1);
 
 
         Vet vet2 = new Vet();
         vet2.setFirstName("Ali");
         vet2.setLastName("Ahmed");
+        vet1.getSpecialities().add(savedSpeciality);
         vetServices.save(vet2);
 
     }

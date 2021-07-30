@@ -11,4 +11,10 @@ public class indexController {
 
         return "index";
     }
+
+    @RequestMapping({"", "/", "/oups", "/oups.html"})
+    public String oups() {
+
+        return "NotImplemented";
+    }
 }
