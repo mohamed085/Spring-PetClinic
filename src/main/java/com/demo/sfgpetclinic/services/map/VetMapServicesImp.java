@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-public class VetServicesMap extends AbstractMapServices<Vet, Long> implements VetServices {
+public class VetMapServicesImp extends AbstractMapServices<Vet, Long> implements VetServices {
 
     private final SpecialtyServices specialtiesServices;
 
-    public VetServicesMap(SpecialtyServices specialtiesServices) {
+    public VetMapServicesImp(SpecialtyServices specialtiesServices) {
         this.specialtiesServices = specialtiesServices;
     }
 
