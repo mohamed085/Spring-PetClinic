@@ -1,15 +1,15 @@
 package com.demo.sfgpetclinic.services.map;
 
-import com.demo.sfgpetclinic.model.Speciality;
-import com.demo.sfgpetclinic.services.SpecialitiesServices;
+import com.demo.sfgpetclinic.model.Specialty;
+import com.demo.sfgpetclinic.services.SpecialtiesServices;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class SpecialitiesServicesMap extends AbstractMapServices<Speciality, Long> implements SpecialitiesServices {
+public class SpecialtiesServicesMap extends AbstractMapServices<Specialty , Long> implements SpecialtiesServices {
     @Override
-    public Set<Speciality> findAll() {
+    public Set<Specialty> findAll() {
         return super.findAll();
     }
 
@@ -19,17 +19,17 @@ public class SpecialitiesServicesMap extends AbstractMapServices<Speciality, Lon
     }
 
     @Override
-    public void delete(Speciality t) {
+    public void delete(Specialty t) {
         super.delete(t);
     }
 
     @Override
-    public Speciality save(Speciality t) {
+    public Specialty save(Specialty t) {
         return super.save(t);
     }
 
     @Override
-    public Speciality findById(Long id) {
+    public Specialty findById(Long id) {
         return super.findById(id);
     }
 }
