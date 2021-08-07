@@ -46,20 +46,23 @@ public class OwnerMapServicesImp extends AbstractMapServices<Owner, Long> implem
     public Owner save(Owner t) {
 
         if (t != null) {
-            t.getPets().forEach(pet -> {
-                 if (pet.getPetType() != null) {
-                     if (pet.getPetType().getId() == null) {
-                         pet.setPetType(petTypeServices.save(pet.getPetType()));
-                     }
-                 } else {
-                     throw new RuntimeException("Pet Type is required");
-                 }
+            if (t.getPets() != null) {
+                t.getPets().forEach(pet -> {
+                    if (pet.getPetType() != null) {
+                        if (pet.getPetType().getId() == null) {
+                            pet.setPetType(petTypeServices.save(pet.getPetType()));
+                        }
+                    } else {
+                        throw new RuntimeException("Pet Type is required");
+                    }
 
-                 if (pet.getId() == null) {
-                     Pet savedPet = petServices.save(pet);
-                     pet.setId(savedPet.getId());
-                 }
-            });
+                    if (pet.getId() == null) {
+                        Pet savedPet = petServices.save(pet);
+                        pet.setId(savedPet.getId());
+                    }
+                });
+            }
+
             return super.save(t);
         } else {
             return null;
@@ -68,11 +71,27 @@ public class OwnerMapServicesImp extends AbstractMapServices<Owner, Long> implem
 
     @Override
     public Owner findByFirstName(String firstName) {
-        return null;
+//        for (Map.Entry<Long, Owner> entry : super.map.entrySet()) {
+//            Long aLong = entry.getKey();
+//            Owner owner = entry.getValue();
+//            if (owner.getFirstName().equals(firstName)) {
+//                return owner;
+//            }
+//        }
+//        return null;
+
+        return this.findAll()
+                .stream()
+                .filter(owner -> owner.getFirstName().equalsIgnoreCase(firstName))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public Owner findByLastName(String lastName) {
-        return null;
-    }
+        return this.findAll()
+                .stream()
+                .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
+                .findFirst()
+                .orElse(null);    }
 }
